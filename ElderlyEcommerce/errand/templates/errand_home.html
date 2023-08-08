@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심부름 홈</title>
+</head>
+<body>
+    <h2>심부름 홈</h2>
+    <div class="container">
+        {% for errand in errands %}
+        <div>
+            <a href="{% url 'errand_detail' errand.id %}">{{errand.item}}</a>
+            {{errand.address}}
+            {{errand.status}}
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'ongoing_errand' %}">진행 중인 심부름</a>
+    <a href="{% url 'mypage' %}">마이페이지</a>
+
+</body>
+</html>

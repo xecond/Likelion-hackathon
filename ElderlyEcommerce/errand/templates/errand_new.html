@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>물품 신청하기</title>
+</head>
+<body>
+    <h2>물품 신청하기</h2>
+
+    <form id="errandForm" action="{% url 'errand_create' %}" method="post">
+        {% csrf_token %}
+        <p>필요 상품, 개수 등 입력 <input type="text" name="item"></p>
+        <p>주소 입력 <input type="text" name="address"></p>
+        <button type="button" onclick="showConfirmation()">제출</button>
+    </form>
+
+    <div id="confirmationPopup" style="display: none;">
+        <p>이대로 요청하시겠습니까?</p>
+        <button type="button" onclick="submitForm()">확인</button>
+        <button type="button" onclick="hideConfirmation()">취소</button>
+    </div>
+
+</body>
+</html>
+
+<script>
+    function showConfirmation() {
+        document.getElementById('confirmationPopup').style.display = 'block';
+    }
+
+    function hideConfirmation() {
+        document.getElementById('confirmationPopup').style.display = 'none';
+    }
+
+    function submitForm() {
+        document.getElementById('errandForm').submit();
+    }
+</script>

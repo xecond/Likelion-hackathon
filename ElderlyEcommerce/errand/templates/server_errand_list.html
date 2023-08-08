@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과거 심부름 내역</title>
+</head>
+<body>
+    {% for errand in past_errands %}
+        <li>
+            <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }} - {{ errand.get_status_display }}</a>
+        </li>
+    {% endfor %}
+</body>
+</html>

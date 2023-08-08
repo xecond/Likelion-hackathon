@@ -15,8 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from home.views import *
+from errand.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index, name="index"),
+    path('inform/', inform, name="inform"),
+    path('errand-home/', errand_home, name="errand_home"),
+    path('errand-home/<int:id>', errand_detail, name="errand_detail"),
+    path('errand-new/', errand_new, name="errand_new"),
+	path('errand-create/', errand_create, name="errand_create"),
+    path('errand-delete/<int:id>', errand_delete, name="errand_delete"),
+    path('errand_detail_for_client/<int:errand_id>/', errand_detail_for_client, name='errand_detail_for_client'),
 ]

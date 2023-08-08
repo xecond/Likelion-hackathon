@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심부름 상세 정보</title>
+</head>
+<body>
+    <h2>심부름 상세 정보</h2>
+
+    <div>
+        요청 내용: {{errand.item}}
+        <br>
+        주소: {{errand.address}}
+        <br>
+        진행 상황: {{errand.get_status_display}}
+    </div>
+
+    {% if errand.status == 'in_progress' %}
+        <a href="{% url 'errand_complete' errand.id %}">완료하기</a>
+        <a href="{% url 'errand_accept_delete' errand.id %}">수락 취소하기</a>
+    {% endif %}
+
+</body>
+</html>
