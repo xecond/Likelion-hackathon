@@ -6,6 +6,9 @@
     <title>이용 안내</title>
 </head>
 <body>
+
+    <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+
     <h2>사용법 소개</h2>
 
     <div class="tab">
@@ -18,8 +21,6 @@
           <div id="tab02">심부름꾼용 설명 내용</div>
         </div>
     </div>
-
-    <a href="{% url 'inform' %}">뒤로가기</a>
 
 </body>
 

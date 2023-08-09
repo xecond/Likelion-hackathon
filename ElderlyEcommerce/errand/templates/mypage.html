@@ -6,15 +6,32 @@
     <title>마이페이지</title>
 </head>
 <body>
+
+    <a href="{% url 'errand_home' %}">뒤로가기</a>
+
     <div>
         {{user.name}}
-        내 포인트: {{user.point}}
+        내 포인트: {{user.point}} p
+        <div>포인트 충전하기</div>
     </div>
 
     <div>
-        <a href="{% url 'myinfo' %}">내 정보</a>
-        <a href="{% url 'server_errand_list' %}">과거 심부름 내역</a>
-        <a href="{% url 'membership_withdrawal' %}">회원 탈퇴</a>
+        <div>진행 중인 심부름</div>
+
+        {% for errand in ongoing_errands %}
+            <li>
+                <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }} </a>
+            </li>
+        {% endfor %}
+
+        <div>완료한 심부름</div>
+
+        {% for errand in past_errands %}
+            <li>
+                <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }} </a>
+            </li>
+        {% endfor %}
+
     </div>
 </body>
 </html>

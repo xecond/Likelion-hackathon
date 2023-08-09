@@ -3,15 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>물품 신청하기</title>
+    <title>심부름 요청하기</title>
 </head>
 <body>
-    <h2>물품 신청하기</h2>
+
+    <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+    
+    <h2>심부름 요청하기</h2>
 
     <form id="errandForm" action="{% url 'errand_create' %}" method="post">
         {% csrf_token %}
-        <p>필요 상품, 개수 등 입력 <input type="text" name="item"></p>
-        <p>주소 입력 <input type="text" name="address"></p>
+        <div>요청 내용</div>
+        <p>필요한 물품과 상세 내용을 입력해 주세요. 심부름꾼이 가져다 드립니다.</p>
+        <input type="text" name="item">
+        <div>주소</div>
+        <p>상세 주소는 심부름을 수락한 사람에게만 공개됩니다.</p>
+        
+        <p>
+            <input type="text" id="zip-code" placeholder="우편번호" readonly>
+            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
+            <input type="button" onclick="execDaumPostcodeReset()" value="초기화">
+        <p>
+        </p>
+            <input type="text" id="address-1" name="address-1" placeholder="도로명주소" style="width: 500px" readonly>
+        <p>
+        </p>
+            <input type="text" id="address-2" name="address-2" placeholder="상세주소" style="width: 500px">
+        </p>
+
+        <br>
         <button type="button" onclick="showConfirmation()">제출</button>
     </form>
 
@@ -23,6 +43,26 @@
 
 </body>
 </html>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode( {
+        oncomplete: function( data ) {
+            document.getElementById( 'zip-code' ).value = data.zonecode;
+            document.getElementById( 'address-1' ).value = data.address;
+            document.getElementById( 'address-1-1' ).value = data.jibunAddress;
+            document.getElementById( 'address-2' ).focus();
+        }
+        } ).open();
+    }
+    function execDaumPostcodeReset() {
+        document.getElementById( 'zip-code' ).value = null;
+        document.getElementById( 'address-1' ).value = null;
+        document.getElementById( 'address-1-1' ).value = null;
+        document.getElementById( 'address-2' ).value = null;
+    }
+</script>
 
 <script>
     function showConfirmation() {

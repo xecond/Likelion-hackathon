@@ -6,14 +6,25 @@
     <title>심부름 상세 정보</title>
 </head>
 <body>
+
+    <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+    
     <h2>심부름 상세 정보</h2>
 
     <div>
         요청 내용: {{errand.item}}
         <br>
-        주소: {{errand.address}}
+        주소:
+        {{errand.address_1}}
+        {{errand.address_2}}
         <br>
         진행 상황: {{errand.get_status_display}}
+    </div>
+
+    <div>
+        의뢰인 전화번호:
+        <input id="client_phone_number" value="{{ errand.client.phone_number }}" readonly>
+        <button onclick="copy_to_clipboard()">복사하기</button>
     </div>
 
     {% if errand.status == 'in_progress' %}
@@ -23,3 +34,14 @@
 
 </body>
 </html>
+
+<script>
+    function copy_to_clipboard() {    
+        var copyText = document.getElementById('client_phone_number');
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("Copy");
+        alert('전화번호가 복사되었습니다.');
+    }
+
+</script>

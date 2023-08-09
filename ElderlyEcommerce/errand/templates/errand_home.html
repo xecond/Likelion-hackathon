@@ -6,18 +6,29 @@
     <title>심부름 홈</title>
 </head>
 <body>
-    <h2>심부름 홈</h2>
+    <div>
+        <a href="{% url 'logout' %}">로그아웃</a>
+    </div>
+
+    <h2>실시간 심부름 요청</h2>
+
+    <form method="get">
+        <label for="address_search">주소 검색:</label>
+        <input type="text" id="address_search" name="address_search">
+        <button type="submit">검색</button>
+    </form>
+    
     <div class="container">
         {% for errand in errands %}
         <div>
             <a href="{% url 'errand_detail' errand.id %}">{{errand.item}}</a>
-            {{errand.address}}
-            {{errand.status}}
+            {{errand.address_1}}
+            {{errand.get_status_display}}
+            {{errand.created_at}}
         </div>
         {% endfor %}
     </div>
 
-    <a href="{% url 'ongoing_errand' %}">진행 중인 심부름</a>
     <a href="{% url 'mypage' %}">마이페이지</a>
 
 </body>

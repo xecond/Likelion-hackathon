@@ -6,12 +6,15 @@
     <title>심부름 상세 정보</title>
 </head>
 <body>
+
+    <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+    
     <h2>심부름 상세 정보</h2>
 
     <div>
         물품: {{errand.item}}
         <br>
-        주소: {{errand.address}}
+        주소: {{errand.address_1}}
         <br>
         진행 상황: {{errand.get_status_display}}
     </div>
@@ -20,8 +23,8 @@
         나의 보유 포인트: <div id="point">{{point}}</div>
     </div>
 
-    {% if errand.status == 'pending' %}
-        <form method="post" action="{% url 'accept_errand' errand.id %}">
+    {% if errand.get_status_display == '수락 대기' %}
+        <form method="post" id="errandForm" action="{% url 'accept_errand' errand.id %}">
             {% csrf_token %}
             <button type="button" onclick="showConfirmation()">수락</button>
         </form>

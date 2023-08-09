@@ -6,19 +6,25 @@
     <title>의뢰인 홈</title>
 </head>
 <body>
+
     <div>
-        <a href="{% url 'errand_new' %}">물품 신청하기</a>
+        <a href="{% url 'logout' %}">로그아웃</a>
+    </div>
+    
+    <div>
+        <a href="{% url 'errand_new' %}">심부름 요청하기</a>
     </div>
 
     <div>
-        <h2>심부름 신청 내역</h2>
+        <h2>심부름 요청 내역</h2>
         {% if requested_errands %}
             {% for errand in requested_errands %}
                 <li><a href="{% url 'errand_detail_for_client' errand.id %}">{{ errand.item }} - {{ errand.get_status_display }}</a></li>
             {% endfor %}
         {% else %}
-            <p>신청 내역이 없습니다.</p>
+            <p>요청하신 심부름이 없습니다.</p>
         {% endif %}
     </div>
+
 </body>
 </html>

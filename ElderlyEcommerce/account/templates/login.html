@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+</head>
+<body>
+  <h2>로그인</h2>
+    <form id="loginForm" method="post">
+        {% csrf_token %}
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="phone_number">전화번호:</label>
+        <input type="number" id="phone_number" name="phone_number" required>
+        <br>
+
+        <div>
+          {% if request.GET.user_type == 'client' %}
+            <input type="hidden" name="user_type" value="client">
+          {% elif request.GET.user_type == 'server' %}
+            <input type="hidden" name="user_type" value="server">
+          {% endif %}
+        </div>
+        
+        <button type="submit">로그인</button>
+    </form>
+
+  <p>계정이 없으신가요? </p>
+  {% if request.GET.user_type == 'client' %}
+      <a href="{% url 'signup' %}?user_type=client">회원가입하기</a>
+  {% elif request.GET.user_type == 'server' %}
+      <a href="{% url 'signup' %}?user_type=server">회원가입하기</a>
+  {% endif %}
+</body>
+</html>
