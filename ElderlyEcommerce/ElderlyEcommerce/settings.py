@@ -58,7 +58,7 @@ ROOT_URLCONF = 'ElderlyEcommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['ElderlyEcommerce/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
