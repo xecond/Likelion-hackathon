@@ -1,0 +1,138 @@
+/* 헤더 */
+.header {
+  position: relative;
+}
+.title {
+  text-align: center;
+  padding-top: 19px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: 600;
+  color: #3e3e3f;
+}
+
+.icon {
+  float: left;
+  margin: 18px 0 0 7px;
+}
+
+.material-symbols-outlined {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.header::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* 배너 */
+.banner {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bannerText {
+  margin-left: 20px;
+  margin-top: 31px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+.bannerImg {
+  display: block;
+  width: 123px;
+  height: auto;
+}
+
+/* 심부름 요청하기 버튼 */
+.requestButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 33px;
+  text-align: center;
+  width: 280px;
+  height: 54.65px;
+  background-color: #fcc419;
+  border-radius: 12px;
+  color: #ffffff;
+}
+
+.requestButton > p {
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 23.04px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* 구분선 */
+.lineMaking {
+  width: 87%;
+  height: 25.35px;
+  margin: auto;
+  /* margin: 0; */
+  border-bottom: 2px solid #ececec;
+}
+
+/* 요청내역 */
+.requestListTitle > p {
+  margin: 29px 0 14px 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+.request {
+  margin: auto;
+  margin-bottom: 14px;
+  display: flex;
+  /* justify-content: space-between; */
+  width: 352px;
+  height: 91px;
+  border: 2px solid #fcc419;
+  border-radius: 12px;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 11px;
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #fcc419;
+}
+.status > p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.requestContent {
+  margin-left: 11px;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 17px;
+  font-weight: 500;
+  color: #555556;
+  width: 256px;
+  height: 67px;
+
+  overflow: hidden; /* 내부 컨텐츠 숨김 */
+  white-space: normal; /* 텍스트를 한 줄로 표시 */
+  text-overflow: ellipsis; /* 텍스트가 넘어갈 경우 '...'으로 표시 */
+}

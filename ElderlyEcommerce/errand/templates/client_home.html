@@ -1,30 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>의뢰인 홈</title>
-</head>
-<body>
+{% extends 'base4.html' %} {% block content %} {% load static %}
 
-    <div>
-        <a href="{% url 'logout' %}">로그아웃</a>
-    </div>
-    
-    <div>
-        <a href="{% url 'errand_new' %}">심부름 요청하기</a>
-    </div>
+<div class="header">
+  <div class="icon">
+    <a href="{{ request.META.HTTP_REFERER }}"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
+    >
+  </div>
+  <div class="title">
+    <img src="{%static 'textlogo.png' %}" />
+  </div>
+</div>
 
-    <div>
-        <h2>심부름 요청 내역</h2>
-        {% if requested_errands %}
-            {% for errand in requested_errands %}
-                <li><a href="{% url 'errand_detail_for_client' errand.id %}">{{ errand.item }} - {{ errand.get_status_display }}</a></li>
-            {% endfor %}
-        {% else %}
-            <p>요청하신 심부름이 없습니다.</p>
-        {% endif %}
-    </div>
+<div class="banner">
+  <p class="bannerText">필요한 물건을 요청하고<br />편하게 받아보세요</p>
+  <img src="{%static 'unboxing.png' %}" class="bannerImg" />
+</div>
 
-</body>
-</html>
+<a href="{% url 'errand_new' %}"
+  ><div class="requestButton"><p>심부름 요청하기</p></div></a
+>
+<div class="lineMaking"></div>
+
+<div class="requestListTitle"><p>요청 내역</p></div>
+
+<div class="requestList">
+  {% if requested_errands %} {% for errand in requested_errands %}
+  <a href="{% url 'errand_detail_for_client' errand.id %}"
+    ><div class="request">
+      <div class="status"><p>{{ errand.get_status_display }}</p></div>
+      <p class="requestContent">{{ errand.item }}</p>
+    </div>
+  </a>
+  {% endfor %} {% else %}
+  <p>요청하신 심부름이 없습니다.</p>
+  {% endif %}
+</div>
+
+<!-- 로그아웃버튼 -->
+<div>
+  <a href="{% url 'logout' %}">로그아웃</a>
+</div>
+{% endblock %}

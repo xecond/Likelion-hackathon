@@ -1,157 +1,103 @@
-{% extends 'base1.html' %}
-  
+{% extends 'base1.html' %} {% block content %} {% load static %}
+<!-- 헤더 -->
+<div class="header">
+  <div class="icon">
+    <a href="{{ request.META.HTTP_REFERER }}"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
+    >
+  </div>
+  <p class="title">사용법 안내</p>
+</div>
 
-  {% block content %}
-  {% load static %}
-      <div class="header">
-        <span class="material-symbols-outlined"> arrow_back </span>
-        <div>사용법 안내</div>
-      </div>
+<!-- 탭바 -->
+<div class="tab-bar">
+  <div class="tab active" id="requestTab">심부름 요청</div>
+  <div class="tab" id="performTab">심부름 수행</div>
+  <div class="tab-indicator"></div>
+</div>
 
-      <div class="tab-bar">
-        <div class="tab active" id="requestTab">심부름 요청</div>
-        <div class="tab" id="performTab">심부름 수행</div>
-        <div class="tab-indicator"></div>
-      </div>
+<div class="content active" id="requestContent">
+  <!-- '심부름 요청' 내용 -->
+  <div class="imgContainer">
+    <img src="{%static 'manual_client_1.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">‘심부름 요청하기’ 버튼을 누르세요.</p>
+  <div class="imgContainer">
+    <img src="{%static 'manual_client_2.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">
+    요청 내용과 배송 받을 주소를 입력 한 후<br />
+    ‘요청하기’ 버튼을 누르세요.<br />심부름꾼들에게 요청이 전달됩니다.
+  </p>
+  <div class="imgContainer">
+    <img src="{%static 'manual_client_3.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">
+    요청 내역을 눌러 ‘상세 내역’ 화면으로<br />
+    이동하세요.
+  </p>
+  <div class="imgContainer">
+    <img src="{%static 'manual_client_4.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">
+    심부름꾼이 요청을 수락하면, 심부름꾼의<br />
+    전화번호가 공개됩니다.<br />
+    복사 버튼을 눌러 심부름꾼과 연락하세요.
+  </p>
+  <p class="manualTextTip">심부름꾼이 도착하면<br />배달팁을 지급해주세요</p>
+</div>
 
-      <div class="content active" id="requestContent">
-        <!-- '심부름 요청' 내용 -->
-        요청 내용
-      </div>
-      <div class="content" id="performContent">
-        <!-- '심부름 수행' 내용 -->
-        수행 내용
-      </div>
+<div class="content" id="performContent">
+  <!-- '심부름 수행' 내용 -->
+  <div class="imgContainer">
+    <img src="{%static 'manual_errand_1.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">원하는 심부름을 선택하세요.</p>
+  <div class="imgContainer">
+    <img src="{%static 'manual_errand_2.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">
+    요청 내용과 배송 주소를 확 한 후<br />
+    ‘수락하기’ 버튼을 누르세요.<br />심부름이 시작됩니다.
+  </p>
+  <div class="imgContainer">
+    <img src="{%static 'manual_errand_3.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">'마이페이지'에서<br />진행중인 심부름을 확인하세요.</p>
+  <div class="imgContainer">
+    <img src="{%static 'manual_errand_4.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">
+    심부름이 시작되면 의뢰인의<br />
+    전화번호가 공개됩니다.<br />복사 버튼을 눌러 의뢰인과 연락하세요.
+  </p>
+  <div class="imgContainer">
+    <img src="{%static 'manual_errand_5.png' %}" class="manualImg" />
+  </div>
+  <p class="manualText">심부름이 끝나면<br />'완료하기' 버튼을 눌러주세요.</p>
+</div>
 
-      <script>
-        const requestTab = document.getElementById("requestTab");
-        const performTab = document.getElementById("performTab");
-        const requestContent = document.getElementById("requestContent");
-        const performContent = document.getElementById("performContent");
-        const tabIndicator = document.querySelector(".tab-indicator");
-  
-        requestTab.addEventListener("click", function () {
-          requestTab.classList.add("active");
-          performTab.classList.remove("active");
-          requestContent.classList.add("active");
-          performContent.classList.remove("active");
-          tabIndicator.style.transform = "translateX(0)";
-        });
-  
-        performTab.addEventListener("click", function () {
-          performTab.classList.add("active");
-          requestTab.classList.remove("active");
-          performContent.classList.add("active");
-          requestContent.classList.remove("active");
-          tabIndicator.style.transform = "translateX(100%)";
-        });
-      </script>
-      {% endblock %}
-      
-    
-    
+<script>
+  const requestTab = document.getElementById("requestTab");
+  const performTab = document.getElementById("performTab");
+  const requestContent = document.getElementById("requestContent");
+  const performContent = document.getElementById("performContent");
+  const tabIndicator = document.querySelector(".tab-indicator");
 
+  requestTab.addEventListener("click", function () {
+    requestTab.classList.add("active");
+    performTab.classList.remove("active");
+    requestContent.classList.add("active");
+    performContent.classList.remove("active");
+    tabIndicator.style.transform = "translateX(0)";
+  });
 
-  <!-- <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
-
-    <h2>사용법 소개</h2>
-
-    <div class="tab">
-      <ul class="tabnav">
-        <li><a href="#tab01">의뢰인</a></li>
-        <li><a href="#tab02">심부름꾼</a></li>
-      </ul>
-      <div class="tabcontent">
-        <div id="tab01">의뢰인용 설명 내용</div>
-        <div id="tab02">심부름꾼용 설명 내용</div>
-      </div>
-    </div>
-  </body>
-
-  <style>
-    html,
-    body {
-      width: 100%;
-    }
-    body,
-    div,
-    ul,
-    li {
-      margin: 0;
-      padding: 0;
-    }
-    ul,
-    li {
-      list-style: none;
-    }
-
-    /*tab css*/
-    .tab {
-      float: left;
-      width: 600px;
-      height: 290px;
-    }
-    .tabnav {
-      font-size: 0;
-      width: 600px;
-      border: 1px solid #ddd;
-    }
-    .tabnav li {
-      display: inline-block;
-      height: 46px;
-      text-align: center;
-      border-right: 1px solid #ddd;
-    }
-    .tabnav li a:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0px;
-      width: 100%;
-      height: 3px;
-    }
-    .tabnav li a.active:before {
-      background: #7ea21e;
-    }
-    .tabnav li a.active {
-      border-bottom: 1px solid #fff;
-    }
-    .tabnav li a {
-      position: relative;
-      display: block;
-      background: #f8f8f8;
-      color: #000;
-      padding: 0 30px;
-      line-height: 46px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-    .tabnav li a:hover,
-    .tabnav li a.active {
-      background: #fff;
-      color: #7ea21e;
-    }
-    .tabcontent {
-      padding: 20px;
-      height: 244px;
-      border: 1px solid #ddd;
-      border-top: none;
-    }
-  </style>
-
-  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <script>
-    $(function () {
-      $(".tabcontent > div").hide();
-      $(".tabnav a")
-        .click(function () {
-          $(".tabcontent > div").hide().filter(this.hash).fadeIn();
-          $(".tabnav a").removeClass("active");
-          $(this).addClass("active");
-          return false;
-        })
-        .filter(":eq(0)")
-        .click();
-    });
-  </script> -->
-</html>
+  performTab.addEventListener("click", function () {
+    performTab.classList.add("active");
+    requestTab.classList.remove("active");
+    performContent.classList.add("active");
+    requestContent.classList.remove("active");
+    tabIndicator.style.transform = "translateX(100%)";
+  });
+</script>
+{% endblock %}
