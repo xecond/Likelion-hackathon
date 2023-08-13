@@ -1,5 +1,5 @@
-
-
+/* index.html */
+/* index.html */
 /* 상단 로고 */
 .textlogo {
   width: 114px;
@@ -21,11 +21,12 @@
 
 /* 버튼 */
 .buttonContainer {
-  /* position: absolute; */
   display: flex;
   justify-content: center;
   margin-top: 84px;
-  /* width: 350px; */
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 90%; */
 }
 
 #clientButton {
@@ -51,6 +52,16 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+@media (max-width: 330px) {
+  #clientButton,
+  #errandButton {
+    width: 148px;
+  }
+  #clientButton {
+    margin-right: 8px;
+  }
+}
+
 .buttonImg {
   margin-top: 39px;
   width: 84px;
@@ -72,10 +83,6 @@
   color: #ffffff;
 }
 
-/* .buttonContainer a {
-  text-decoration: none;
-} */
-
 /* 사용법 안내 버튼*/
 .manualContainer {
   display: flex;
@@ -83,7 +90,7 @@
   margin-top: 58px;
   margin-left: auto;
   margin-right: auto;
-  width: 351px;
+  width: 90%;
   height: 59px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(0, 0, 0, 1);
@@ -97,22 +104,51 @@
   margin: auto;
 }
 
+/* inform.html */
+/* inform.html */
 /* 헤더 */
 .header {
-  display: flex;
-  align-items: center;
+  position: relative;
 }
-.header div {
-  flex: 1;
-  text-align: center;/
+.title {
+  text-align: center;
+  padding-top: 19px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: 600;
+  color: #3e3e3f;
 }
+
+.icon {
+  float: left;
+  margin: 18px 0 0 7px;
+}
+
 .material-symbols-outlined {
-  margin-right: 10px; /* 화살표와의 간격을 조절 */
+  font-size: 40px;
+  font-weight: 600;
 }
+
+.header::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
 /* 탭바 */
 .tab-bar {
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0;
+  width: 90%;
+  margin: auto;
+  margin-top: 8px;
+  z-index: 1000;
+  background-color: #ffffff;
 }
 
 .tab {
@@ -130,10 +166,10 @@
   color: #3e3e3f;
   /* border-bottom: 3px solid #3e3e3f; */
 }
-
+/* 탭바 아래 컨텐츠 */
 .content {
   display: none;
-  padding: 20px;
+  padding: 21px;
   border-top: 1.5px solid #e3e2e2;
 }
 
@@ -151,4 +187,35 @@
   background-color: #3e3e3f;
   transition: transform 0.3s ease-in-out;
   border-radius: 5px;
+}
+
+.imgContainer {
+  margin: auto;
+  width: 304px;
+  height: 270.79px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.manualImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.manualText {
+  margin: 0;
+  margin-bottom: 53px;
+  color: #686f77;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+
+.manualTextTip {
+  margin: 40px;
+  /* color: #686f77; */
+  font-weight: 700;
+  font-size: 23px;
+  text-align: center;
 }
