@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>로그인</title>
-</head>
-<body>
-  <h2>로그인</h2>
+{% extends 'base2.html' %}
+
+
+  {% block content %}
+  {% load static %}
+
+  <div class="header">
+    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
+  </div>
+  
+  <div class="logo-and-title">
+    <img class="textlogo" src="{%static 'loginPageLogo.png' %}" alt="로고" />
+    <h1>손쉬운 심부름꾼 매칭 서비스</h1>
+  </div>
+
+  <div class="mode-box">
+    <p style="color: #25D815;">심부름 수행하기</p>
+  </div>
+  
+  <div class="name-number">
     <form id="loginForm" method="post">
         {% csrf_token %}
-        <label for="name">이름:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" placeholder="이름을 입력해주세요" id="name" name="name" required>
         <br>
-        <label for="phone_number">전화번호:</label>
-        <input type="number" id="phone_number" name="phone_number" required>
+        <input type="number" placeholder="전화번호를 입력해주세요" id="phone_number" name="phone_number" required>
         <br>
 
         <div>
@@ -22,16 +31,19 @@
           {% elif request.GET.user_type == 'server' %}
             <input type="hidden" name="user_type" value="server">
           {% endif %}
-        </div>
-        
+    </div>
+    <div class="submit">  
         <button type="submit">로그인</button>
+    </div>
     </form>
+  </div>
 
+<div class = "more">
   <p>계정이 없으신가요? </p>
   {% if request.GET.user_type == 'client' %}
       <a href="{% url 'signup' %}?user_type=client">회원가입하기</a>
   {% elif request.GET.user_type == 'server' %}
       <a href="{% url 'signup' %}?user_type=server">회원가입하기</a>
   {% endif %}
-</body>
-</html>
+</div>
+  {% endblock %}

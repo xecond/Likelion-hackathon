@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입</title>
-</head>
-<body>
+{% extends 'base2.html' %}
+
+
+  {% block content %}
+  {% load static %}
+
+  <div class="header">
+    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
+  </div>
+  
   <h2>회원가입</h2>
   <form method="post">
       {% csrf_token %}
@@ -17,5 +19,6 @@
       <br>
       <button type="submit">가입하기</button>
   </form>
-</body>
-</html>
+
+
+{% endblock %}
