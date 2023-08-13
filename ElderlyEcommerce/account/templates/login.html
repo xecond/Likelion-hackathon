@@ -1,49 +1,61 @@
-{% extends 'base2.html' %}
+{% extends 'base2.html' %} {% block content %} {% load static %}
 
-
-  {% block content %}
-  {% load static %}
-
-  <div class="header">
-    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
+<div class="header">
+  <div class="icon">
+    <a href="{{ request.META.HTTP_REFERER }}"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
+    >
   </div>
-  
-  <div class="logo-and-title">
-    <img class="textlogo" src="{%static 'loginPageLogo.png' %}" alt="로고" />
-    <h1>손쉬운 심부름꾼 매칭 서비스</h1>
-  </div>
+</div>
 
-  <div class="mode-box">
-    <p style="color: #25D815;">심부름 수행하기</p>
-  </div>
-  
-  <div class="name-number">
-    <form id="loginForm" method="post">
-        {% csrf_token %}
-        <input type="text" placeholder="이름을 입력해주세요" id="name" name="name" required>
-        <br>
-        <input type="number" placeholder="전화번호를 입력해주세요" id="phone_number" name="phone_number" required>
-        <br>
+<div class="logo-and-title">
+  <img class="textlogo" src="{%static 'loginPageLogo.png' %}" alt="로고" />
+  <h1>손쉬운 심부름꾼 매칭 서비스</h1>
+</div>
 
-        <div>
-          {% if request.GET.user_type == 'client' %}
-            <input type="hidden" name="user_type" value="client">
-          {% elif request.GET.user_type == 'server' %}
-            <input type="hidden" name="user_type" value="server">
-          {% endif %}
+<div class="mode-box">
+  <p style="color: #25d815">심부름 수행하기</p>
+</div>
+
+<div class="name-number">
+  <form id="loginForm" method="post">
+    {% csrf_token %}
+    <input
+      type="text"
+      placeholder="이름을 입력해주세요"
+      id="name"
+      name="name"
+      required
+    />
+    <input
+      type="number"
+      placeholder="전화번호를 입력해주세요"
+      id="phone_number"
+      name="phone_number"
+      required
+    />
+    <br />
+
+    <div>
+      {% if request.GET.user_type == 'client' %}
+      <input type="hidden" name="user_type" value="client" />
+      {% elif request.GET.user_type == 'server' %}
+      <input type="hidden" name="user_type" value="server" />
+      {% endif %}
     </div>
-    <div class="submit">  
-        <button type="submit">로그인</button>
-    </div>
-    </form>
-  </div>
 
-<div class = "more">
-  <p>계정이 없으신가요? </p>
+    <div class="submit">
+      <button type="submit">로그인</button>
+    </div>
+  </form>
+</div>
+
+<div class="more">
+  <p>계정이 없으신가요?</p>
   {% if request.GET.user_type == 'client' %}
-      <a href="{% url 'signup' %}?user_type=client">회원가입하기</a>
+  <a href="{% url 'signup' %}?user_type=client">회원가입하기</a>
   {% elif request.GET.user_type == 'server' %}
-      <a href="{% url 'signup' %}?user_type=server">회원가입하기</a>
+  <a href="{% url 'signup' %}?user_type=server">회원가입하기</a>
   {% endif %}
 </div>
-  {% endblock %}
+{% endblock %}

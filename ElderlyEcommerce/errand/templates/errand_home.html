@@ -1,100 +1,69 @@
-{% extends 'base3.html' %}
-
-
-  {% block content %}
-  {% load static %}
-
+{% extends 'base3.html' %} {% block content %} {% load static %}
+<!-- 헤더 -->
 <div class="header">
-<div class="icon">
-<a href="{{ request.META.HTTP_REFERER }}"
-  ><span class="material-symbols-outlined"> arrow_back </span></a
->
-</div>
-
-<div class="title">
-<img src="{%static 'textlogo.png' %}" />
-</div>
-</div>
-
-<div class="logoContainer">
-    <img class="textlogo" src="{% static 'deliveryBike.png' %}" alt="로고" />
+  <div class="icon">
+    <a href="{{ request.META.HTTP_REFERER }}"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
+    >
   </div>
 
-  <p class="greetingText">
-    도움이 필요한<br />미션을 매칭해요</span>
-  </p>
+  <div class="title">
+    <img src="{%static 'textlogo.png' %}" />
+  </div>
+</div>
 
-    <div class="separator-line"></div>
-     
-    <div class="request-text">
-    <h2>실시간 심부름 요청</h2>
-    </div>
+<!-- 배너 -->
+<div class="banner">
+  <p class="bannerText">도움이 필요한<br />미션을 매칭해요</p>
+  <img src="{%static 'deliveryBike.png' %}" class="bannerImg" />
+</div>
 
-    <div class="address_search">
-        <form method="get">
-            <label for="address_search"></label>
-            <div class="search-box-container">
-                <div class="input-container">
-                    <span class="material-symbols-outlined">
-                    pin_drop
-                    </span>
-                     <input type="text" id="address_search" name="address_search" placeholder="주소를 입력하세요">
-            </div>
-            <button type="submit">검색</button>
-            </div>
-        </form>
-    </div>
-    
-    <div class="container">
-        <div class="gray-box">
-            <span class="material-symbols-outlined">
-                sell
-                </span>
-            <div>
-                <p class="bold">안녕하세요, 생수 큰거로다가 6개 부탁드려요</p>
-                <p class="gray">서울특별시 서대문구 창천동</p>
-                <p class="black">2023/08/13 1:01 pm</p>
-            </div>
-        </div>
-        
-        <div class="gray-box">
-            <span class="material-symbols-outlined">
-                sell
-                </span>
-            <div>
-                <p class="bold">안녕하세요, 생수 큰거로다가 6개 부탁드려요</p>
-                <p class="gray">서울특별시 서대문구 창천동</p>
-                <p class="black">2023/08/13 1:01 pm</p>
-            </div>
-        </div>
-        
-        <div class="gray-box">
-            <span class="material-symbols-outlined">
-                sell
-                </span>
-            <div>
-                <p class="bold">안녕하세요. 생수 큰거로다가 6개 부탁드려요</p>
-                <p class="gray">서울특별시 서대문구 창천동</p>
-                <p class="black">2023/08/13 1:01 pm</p>
-            </div>
-        </div>
-    </div>
-        
-        <div class="container">
-            {% for errand in errands %}
-            <div>
-                <a href="{% url 'errand_detail' errand.id %}">{{errand.item}}</a>
-                {{errand.address_1}}
-                {{errand.get_status_display}}
-                {{errand.created_at}}
-            </div>
-            {% endfor %}
-        </div>
+<div class="lineMaking"></div>
 
-    <div class="separator-line2"></div>
+<!-- 실시간 심부름 요청 리스트 -->
+<div class="request-text">
+  <h2>실시간 심부름 요청</h2>
+</div>
 
-    <div class="lastLine"></div>
-    <div class="mypage">
-    <a href="{% url 'mypage' %}">마이페이지</a>
+<div class="address_search">
+  <form method="get">
+    <div class="search-box-container">
+      <div class="input-container">
+        <span class="material-symbols-outlined"> pin_drop </span>
+        <input
+          type="text"
+          id="address_search"
+          name="address_search"
+          placeholder="원하는 지역을 입력하세요"
+        />
+      </div>
+      <button type="submit">검색</button>
     </div>
+  </form>
+</div>
+
+<div>
+  {% for errand in errands %}
+  <a href="{% url 'errand_detail' errand.id %}">
+    <div
+      class="gray-box {% if errand.get_status_display == '진행 중' or errand.get_status_display == '완료' %}none{% endif %}"
+    >
+      <span class="material-symbols-outlined"> sell </span>
+      <div class="textBundle">
+        <p class="content">{{errand.item}}</p>
+        <p class="location">{{errand.address_1}}</p>
+        <p class="uploadTime">{{errand.created_at}}</p>
+      </div>
+    </div></a
+  >
+  {% endfor %}
+</div>
+<div class="barrier"></div>
+
+<div class="sticky">
+
+<a href="{% url 'mypage' %}"><div class="mypage">
+  <p>마이페이지</p></a>
+</div></a>
+</div>
 {% endblock %}

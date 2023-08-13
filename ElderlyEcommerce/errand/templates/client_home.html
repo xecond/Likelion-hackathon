@@ -1,5 +1,5 @@
 {% extends 'base4.html' %} {% block content %} {% load static %}
-
+<!-- 헤더 -->
 <div class="header">
   <div class="icon">
     <a href="{{ request.META.HTTP_REFERER }}"
@@ -11,6 +11,7 @@
   </div>
 </div>
 
+<!-- 배너 -->
 <div class="banner">
   <p class="bannerText">필요한 물건을 요청하고<br />편하게 받아보세요</p>
   <img src="{%static 'unboxing.png' %}" class="bannerImg" />
