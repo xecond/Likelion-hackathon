@@ -1,32 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심부름 상세 정보</title>
-</head>
-<body>
-
-    <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
+{% extends 'base4.html' %} {% block content %} {% load static %}
+<!-- 헤더 -->
+<div class="header">
+    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
+    <p class="title">상세 내용</p>
+    </div>
     
-    <h2>심부름 상세 정보</h2>
+    <!-- 본문 -->
+        <!-- <form id="errandForm" action="{% url 'errand_create' %}" method="post"> -->
+            <form method="post" id="errandForm" action="{% url 'accept_errand' errand.id %}">
+            {% csrf_token %}
+            <p class="miniTitle" id="requestText">요청 내용</p>
+            <!-- <textarea name="item" class="custom-input" placeholder="내용을  입력해주세요"></textarea> -->
+            
+    
+            <div class="custom-input"  >{{errand.item}}</div>
+    
+    <!-- 주소 -->
+            <p class="miniTitle" id="requestText">주소</p>
+    <p class="description">상세 주소는 심부름을 수락한 사람에게만 공개됩니다.</p>
+            
+    </p>
+    <div class="addressInput" id="address-1">{{errand.address_1}}</div>
+    
 
-    <div>
-        물품: {{errand.item}}
-        <br>
-        주소: {{errand.address_1}}
-        <br>
-        진행 상황: {{errand.get_status_display}}
+    </p>
+            <p>
+                <input type="text" class="none"  id="zip-code" placeholder="우편번호" readonly>
+                
+            <p>
+    
+    <div class="lineMaking" id="lineMaking2"></div>
+    
+    <div class="underBanner">
+        <p id="tipAlert">심부름을 완료하면<br><span id="deliveryTip">4,000원</span>의 팁을<br>받을 수 있어요</p><img src="{%static 'deliveryMan1.png' %}" id="underBannerImg">
+    </div>
+    
+            <button type="button" class="submitButton" id="showModalButton" onclick="showConfirmation()">수락하기</button>
+        </form>
+    
+        <!-- 팝업 -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modalContent">
+                    <img src="{%static 'pay.png' %}" >
+                    <p>수락하면 100포인트가 소모됩니다.<br>수락하시겠습니까?</p>
+                </div>
+              <button class="modalButton" id="submitModal" type="button" onclick="submitForm()">수락하기</button>
+              <button class="modalButton close" id="closeModal" type="button" onclick="hideConfirmation()">취소하기</button>
+              
+            </div>
+          </div>
+
+    
     </div>
 
-    <div>
+    <!-- <div>
         나의 보유 포인트: <div id="point">{{point}}</div>
     </div>
 
     {% if errand.get_status_display == '수락 대기' %}
         <form method="post" id="errandForm" action="{% url 'accept_errand' errand.id %}">
             {% csrf_token %}
-            <button type="button" onclick="showConfirmation()">수락</button>
+            <button type="button" onclick="showConfirmation()">수락락</button>
         </form>
     {% endif %}
 
@@ -39,10 +74,8 @@
     <div id="rejectionPopup" style="display: none;">
         <p>포인트가 부족합니다.</p>
         <button type="button" onclick="hideRejection()">확인</button>
-    </div>
+    </div> -->
 
-</body>
-</html>
 
 <script>
     var point = Number(document.getElementById('point').innerHTML);
@@ -68,3 +101,26 @@
         document.getElementById('errandForm').submit();
     }
 </script>
+
+<script>
+    // 팝업띄우기
+      const showModalButton = document.getElementById('showModalButton');
+  const modal = document.getElementById('modal');
+  const closeModal = document.getElementById('closeModal');
+  
+  showModalButton.addEventListener('click', function() {
+    modal.style.display = 'block';
+  });
+  
+  closeModal.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+  
+  window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+  
+  </script>
+{% endblock %}

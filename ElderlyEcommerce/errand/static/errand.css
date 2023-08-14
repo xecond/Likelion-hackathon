@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%);
   font-size: 30px;
   font-weight: 600;
-  color: #3e3e3f;
+
 }
 
 .icon {
@@ -27,6 +27,10 @@
 .material-symbols-outlined {
   font-size: 40px;
   font-weight: 600;
+  color: #3E3E3F; /*보라색없애기*/
+}
+#noneicon {
+  color: white;
 }
 
 .header::after {
@@ -261,12 +265,13 @@ button[type="submit"] {
 }
 
 .charge {
+  text-align: center;
   margin: 0;
   display: flex;
   justify-content: center; /* 가로 가운데 정렬 */
   align-items: center; /* 세로 가운데 정렬 */
   width: 134px;
-  height: 30px;
+  height: 45px;
   background-color: #fcc419;
   cursor: pointer;
   border-radius: 5px;
@@ -275,7 +280,7 @@ button[type="submit"] {
 
 
 .ongoing-text {
-  margin: 8px 0 0 20px;
+  margin: 16px 0 7px 20px;
   font-size: 25px;
   font-weight: 700;
   color: #3e3e3f;
@@ -283,11 +288,24 @@ button[type="submit"] {
 
 
 .finish-text {
-  margin: 8px 0 0 20px;
+  margin: 36px 0 7px 20px;
   font-size: 25px;
   font-weight: 700;
   color: #3e3e3f;
 }
 
 
-
+.logout {
+  margin: auto;
+  margin-top: 115px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  color: black;
+  text-decoration: none;
+}
+a.no-color-change {
+  color: inherit; /* 부모 요소의 색상 상속 */
+  text-decoration: underline;
+}

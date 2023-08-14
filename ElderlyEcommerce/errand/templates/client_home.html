@@ -1,8 +1,8 @@
 {% extends 'base4.html' %} {% block content %} {% load static %}
 <!-- 헤더 -->
 <div class="header">
-  <div class="icon noneicon">
-    <span class="material-symbols-outlined"> arrow_back </span>
+  <div class="icon">
+    <span class="material-symbols-outlined" id="noneicon"> arrow_back </span>
   </div>
   <div class="title">
     <img src="{%static 'textlogo.png' %}" />
@@ -15,7 +15,7 @@
   <img src="{%static 'unboxing.png' %}" class="bannerImg" />
 </div>
 
-<a href="{% url 'errand_new' %}"
+<a href="{% url 'errand_new' %}" class="afit"
   ><div class="requestButton"><p>심부름 요청하기</p></div></a
 >
 <div class="lineMaking"></div>

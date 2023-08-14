@@ -1,47 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심부름 상세 정보</title>
-</head>
-<body>
+{% extends 'base4.html' %} {% block content %} {% load static %}
+<!-- 헤더 -->
+<div class="header">
+  <div class="icon">
+    <a href="{{ request.META.HTTP_REFERER }}"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
+    >
+  </div>
+  <p class="title">상세 내역</p>
+</div>
 
-    <a href="{{ request.META.HTTP_REFERER }}">뒤로가기</a>
-    
-    <h2>심부름 상세 정보</h2>
+<p class="miniTitle" id="requestText">요청 내용</p>
+<div class="textBox" id="requestText">
+  <p class="text">{{errand.item}}</p>
+</div>
+<p class="miniTitle" id="phoneNumber">의뢰인 전화번호</p>
+<div class="textBox" id="phoneNumber">
+  <p class="text" id="phoneNumberCopy">{{ errand.client.phone_number }}</p>
 
-    <div>
-        요청 내용: {{errand.item}}
-        <br>
-        주소:
-        {{errand.address_1}}
-        {{errand.address_2}}
-        <br>
-        진행 상황: {{errand.get_status_display}}
-    </div>
+  <button
+    class="text-like-button"
+    id="copyButton"
+    onclick="copy_to_clipboard()"
+  >
+    <span class="material-symbols-outlined"> content_copy </span>
+  </button>
+</div>
+<p class="miniTitle" id="address">주소</p>
+<div id="map"></div> 
+<div class="textBox" id="address">
+  <p class="text">{{errand.address_1}}, {{errand.address_2}}</p>
+</div>
 
-    <div>
-        의뢰인 전화번호:
-        <input id="client_phone_number" value="{{ errand.client.phone_number }}" readonly>
-        <button onclick="copy_to_clipboard()">복사하기</button>
-    </div>
-
-    {% if errand.status == 'in_progress' %}
-        <a href="{% url 'errand_complete' errand.id %}">완료하기</a>
-        <a href="{% url 'errand_accept_delete' errand.id %}">수락 취소하기</a>
-    {% endif %}
-
-</body>
-</html>
+{% if errand.status == 'in_progress' %}
+<div class="buttonWrap">
+  <a href="{% url 'errand_complete' errand.id %}"
+    ><div class="button" id="finish"><p>완료하기</p></div></a
+  >
+  <a href="{% url 'errand_accept_delete' errand.id %}"
+    ><div class="button" id="stop"><p>중단하기</p></div></a
+  >
+</div>
+{% endif %}
 
 <script>
-    function copy_to_clipboard() {    
-        var copyText = document.getElementById('client_phone_number');
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        document.execCommand("Copy");
-        alert('전화번호가 복사되었습니다.');
+  function copy_to_clipboard() {
+    var copyText = document.getElementById("phoneNumberCopy"); // p 태그 선택
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    try {
+      var successful = document.execCommand("copy");
+      var msg = successful
+        ? "전화번호가 복사되었습니다."
+        : "복사에 실패했습니다.";
+      alert(msg);
+    } catch (err) {
+      console.error("복사 실패:", err);
     }
 
+    window.getSelection().removeAllRanges();
+  }
 </script>
+<script>
+    var container = document.getElementById('map');
+    var options = {
+      center: new kakao.maps.LatLng(37.46810564448595, 127.03934411351716), // 기본 위치 (양재at센터)
+      level: 5 // 지도 확대 레벨
+    };
+
+    var map = new kakao.maps.Map(container, options);
+    var geocoder = new kakao.maps.services.Geocoder();
+    var address = '{{errand.address_1}}'; // 표시하려는 주소
+
+    // 주소를 좌표로 변환
+    geocoder.addressSearch(address, function (result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        var marker = new kakao.maps.Marker({
+          position: new kakao.maps.LatLng(result[0].y, result[0].x),
+          map: map
+        });
+        map.setCenter(marker.getPosition());
+      } else {
+        alert('주소를 찾을 수 없습니다.');
+      }
+    });
+  </script>
+{% endblock %}

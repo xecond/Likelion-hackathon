@@ -6,10 +6,6 @@
   position: relative;
 }
 
-
-.noneicon {
-  color: white;
-}
 .title {
   text-align: center;
   padding-top: 19px;
@@ -20,7 +16,6 @@
   transform: translate(-50%, -50%);
   font-size: 30px;
   font-weight: 600;
-  color: #3e3e3f;
 }
 
 .icon {
@@ -32,6 +27,9 @@
   font-size: 40px;
   font-weight: 600;
   color: #3E3E3F; /*보라색없애기*/
+}
+#noneicon {
+  color: white;
 }
 
 .header::after {
@@ -83,6 +81,12 @@
   font-size: 23.04px;
   font-weight: 700;
   color: #ffffff;
+
+}
+.afit {
+  display: block;
+  width: 280px;
+  margin: auto;
 }
 
 /* 구분선 */
@@ -201,6 +205,7 @@ a.no-color-change {
   border-radius: 12px;
   width: 90%;
   height: 100px;
+  overflow: auto;
 }
 
 .textBox#requestText {
@@ -224,6 +229,7 @@ a.no-color-change {
 
 .textBox#address {
   height: 73px;
+  margin-bottom: 18px;
 }
 
 p.text {
@@ -265,7 +271,7 @@ p.text {
 .description {
   margin-top: 8px;
   margin-left: 20px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   color: black;
 }
@@ -403,7 +409,7 @@ margin-top: 29px;
 
 .modal-content {
   background-color: white;
-  margin: 130px auto;
+  margin: 78px auto;
   width: 85%;
   height: 448px;
   border-radius: 24px
@@ -430,8 +436,8 @@ margin-top: 29px;
   height: 44px;
   border-radius: 50px;
   border: 1px solid #FCC419;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
 }
 button#submitModal {
 color: white;
@@ -443,5 +449,41 @@ color: #FCC419;
 background-color: white;
 }
 
+/* C-4-2 페이지 */
+/* C-4-2 페이지 */
 
+.buttonWrap {
+  margin: 16px auto;
+  display: flex;
+  justify-content: center
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 106px;
+  height: 45px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-size: 19px;
+  font-weight: 700;
+}
+#finish {
+  margin-right: 18px;
+  background-color: #25D815;
+}
+#stop {
+  background-color: #FB5757;
+}
+
+#map {
+  margin: 10px auto;
+  margin-top: 10px;
+  width: 85%;
+   height: 160px;
+   border-radius: 15px;
+   border:1px solid #D8D8D8;
+}
 

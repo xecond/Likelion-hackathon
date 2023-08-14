@@ -1,59 +1,65 @@
 {% extends 'base4.html' %} {% block content %} {% load static %}
 
 <div class="header">
-    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
-    <p class="title">상세 내역</p>
+  <div class="icon">
+    <a href="{{ request.META.HTTP_REFERER }}"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
+    >
   </div>
+  <p class="title">상세 내역</p>
+</div>
 
 <p class="miniTitle" id="requestText">요청 내용</p>
 <div class="textBox" id="requestText">
-    <p class="text">{{errand.item}}</p>
+  <p class="text">{{errand.item}}</p>
 </div>
 <p class="miniTitle" id="phoneNumber">심부름꾼 전화번호</p>
 <div class="textBox" id="phoneNumber">
+  {% if errand.get_status_display == '수락 대기' %}
+  <p class="text">아직 심부름꾼이 없습니다.</p>
+  {% else %}
+  <p class="text" id="phoneNumberCopy">{{errand.server.phone_number}}</p>
 
-    {% if errand.get_status_display == '수락 대기' %}
-    <p class="text">아직 심부름꾼이 없습니다.</p>
-    {% else %}
-    <p class="text">{{errand.server.phone_number}}</p>
-
-<button class="text-like-button" onclick="copy_to_clipboard()"><span class="material-symbols-outlined">
-    content_copy
-    </span></button>
-    {% endif %}
+  <button
+    class="text-like-button"
+    id="copyButton"
+    onclick="copy_to_clipboard()"
+  >
+    <span class="material-symbols-outlined"> content_copy </span>
+  </button>
+  {% endif %}
 </div>
 <p class="miniTitle" id="address">주소</p>
-<div class="textBox" id="address"><p class="text">{{errand.address_1}},
-    {{errand.address_2}}</p></div>
+<div class="textBox" id="address">
+  <p class="text">{{errand.address_1}}, {{errand.address_2}}</p>
+</div>
 
+{% if errand.get_status_display == '수락 대기' %}
+<div class="errand_delete">
+  <a href="{% url 'errand_delete' errand.id %}"> 요청 취소하기 </a>
+</div>
 
-
-
-    {% if errand.get_status_display == '수락 대기' %}
-    <div class="errand_delete">
-        <a href="{% url 'errand_delete' errand.id %}">
-          요청 취소하기
-        </a>
-      </div>
-      
-    {% endif %}
-
-    <div class="none">
-        심부름꾼 전화번호:
-        <input id="server_phone_number" value="{{errand.server.phone_number}}" readonly>
-        <button onclick="copy_to_clipboard()">복사하기</button>
-    </div>
-
-
+{% endif %}
 
 <script>
-    function copy_to_clipboard() {    
-        var copyText = document.getElementById('server_phone_number');
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        document.execCommand("Copy");
-        alert('전화번호가 복사되었습니다.');
+  function copy_to_clipboard() {
+    var copyText = document.getElementById("phoneNumberCopy"); // p 태그 선택
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    try {
+      var successful = document.execCommand("copy");
+      var msg = successful
+        ? "전화번호가 복사되었습니다."
+        : "복사에 실패했습니다.";
+      alert(msg);
+    } catch (err) {
+      console.error("복사 실패:", err);
     }
 
+    window.getSelection().removeAllRanges();
+  }
 </script>
 {% endblock %}

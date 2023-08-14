@@ -2,10 +2,9 @@
 
 <!-- 헤더 -->
 <div class="header">
-    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back
-            </span></a></div>
-    <p class="title">마이페이지</p>
-</div>
+    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
+    <p class="title">사용법 안내</p>
+  </div>
 
 
 <!-- info -->
@@ -14,7 +13,7 @@
     <div class = 'box-wrap'>
         <p class="name">{{user.name}}님의 포인트</p>
         <p class="point">{{user.point}} p</p>
-        <div class="charge">포인트 충전하기</div></div>  
+        <div class="charge">포인트 충전하기<br>(기능 준비중)</div></div>  
 </div>
 
 <div class="lineMaking"></div>
@@ -24,9 +23,9 @@
     <div class="ongoing-text">진행 중인 심부름</div>
 
     {% for errand in ongoing_errands %}
-        <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }}
+        <a href="{% url 'errand_detail_for_server' errand.id %}">
             <div
-                class="gray-box {% if errand.get_status_display == '진행 중' or errand.get_status_display == '완료' %}none{% endif %}">
+                class="gray-box ">
 
                 <span class="material-symbols-outlined"> sell </span>
                 <div class="textBundle">
@@ -44,16 +43,25 @@
     <div class = 'finish-text'>완료한 심부름</div>
 
     {% for errand in past_errands %}
-    <li>
-        <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }} </a>
-    </li>
+    <a href="{% url 'errand_detail_for_server' errand.id %}">
+        <div
+            class="gray-box ">
+
+            <span class="material-symbols-outlined"> sell </span>
+            <div class="textBundle">
+                <p class="content">{{errand.item}}</p>
+                <p class="location">{{errand.address_1}}</p>
+                <p class="uploadTime">{{errand.created_at}}</p>
+            </div>
+        </div>
+    </a>
     {% endfor %}
 
 </div>
 
-<div>
-    <a href="{% url 'logout' %}">로그아웃</a>
-</div>
+<div class="logout">
+    <a href="{% url 'logout' %}" class="no-color-change">로그아웃</a>
+  </div>
 
 
 {% endblock %}
