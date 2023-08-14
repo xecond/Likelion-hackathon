@@ -131,6 +131,7 @@
 .material-symbols-outlined {
   font-size: 40px;
   font-weight: 600;
+  color: #3e3e3f;
 }
 
 .header::after {

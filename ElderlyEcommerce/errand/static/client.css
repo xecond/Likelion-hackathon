@@ -1,6 +1,14 @@
+/* 홈화면 */
+/* 홈화면 */
+/* 홈화면 */
 /* 헤더 */
 .header {
   position: relative;
+}
+
+
+.noneicon {
+  color: white;
 }
 .title {
   text-align: center;
@@ -23,6 +31,7 @@
 .material-symbols-outlined {
   font-size: 40px;
   font-weight: 600;
+  color: #3E3E3F; /*보라색없애기*/
 }
 
 .header::after {
@@ -116,6 +125,19 @@
   border-radius: 5px;
   background-color: #fcc419;
 }
+.greenborder {
+  border: 2px solid #25d815;
+}
+.greenback {
+  background-color: #25d815;
+}
+
+.grayborder {
+  border: 2px solid #d8d8d8;
+}
+.grayback {
+  background-color: #d8d8d8;
+}
 .status > p {
   text-align: center;
   font-size: 16px;
@@ -136,3 +158,290 @@
   white-space: normal; /* 텍스트를 한 줄로 표시 */
   text-overflow: ellipsis; /* 텍스트가 넘어갈 경우 '...'으로 표시 */
 }
+
+.noErrand {
+  margin: auto;
+  margin-top: 95px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #555556;
+}
+
+.logout {
+  margin: auto;
+  margin-top: 115px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  color: black;
+  text-decoration: none;
+}
+a.no-color-change {
+  color: inherit; /* 부모 요소의 색상 상속 */
+  text-decoration: underline;
+}
+
+/* 상세내역 */
+/* 상세내역 */
+/* 상세내역 */
+.miniTitle {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  margin-top: 33px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+.textBox {
+  margin: auto;
+  border: 2px solid #d8d8d8;
+  border-radius: 12px;
+  width: 90%;
+  height: 100px;
+}
+
+.textBox#requestText {
+  height: 160px;
+}
+.textBox#phoneNumber {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.text-like-button {
+  background-color: transparent;
+  border: none;
+  padding-top: 5px;
+  font: inherit; /* 부모 요소의 글꼴 상속 */
+  cursor: pointer;
+}
+.text-like-button span {
+  font-size: 28px;
+}
+
+.textBox#address {
+  height: 73px;
+}
+
+p.text {
+  width: 91%;
+  margin-top: 12px;
+  margin-left: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #555556;
+}
+
+.errand_delete {
+  margin: auto;
+  margin-top: 50px;
+  width: 170px;
+  height: 45.28px;
+  background-color: #fb5757;
+  border-radius: 9.94px;
+  text-align: center;
+  color: white;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 47px;
+}
+
+.errand_delete a {
+  display: inline-block; /* 인라인 블록 요소로 변경 */
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 부모 요소의 색상 상속 */
+}
+
+.none {
+  display: none;
+}
+
+/* 심부름요청폼 */
+/* 심부름요청폼 */
+/* 심부름요청폼 */
+.description {
+  margin-top: 8px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
+}
+
+.custom-input {
+  display: block;
+  margin: auto;
+  width: 92%;
+  height: 160px;
+  padding: 10px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  transition: border-color 0.3s, outline 0.3s;
+  /* 테두리와 아웃라인 색 변경 시 부드러운 애니메이션을 위한 트랜지션 설정 */
+  outline: none; /* 포커스 아웃라인 제거 */
+  font-size: 16px;
+  font-family: SUIT;
+  color: #555556;
+}
+.custom-input:focus {
+  border-color: #fcc419;
+  box-shadow: 0 0 4px #fcc419;
+}
+.custom-input::placeholder {
+  color: #d8d8d8;
+  font-family: SUIT;
+  font-size: 15px;
+}
+
+/* 주소입력 */
+#zip-code-button {
+  display: block;
+  margin: auto;
+  width: 91%;
+  height: 53px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000;
+  font-family: SUIT;
+  margin-bottom: 10px;
+}
+
+.addressInput {
+  display: block;
+  margin: auto;
+  width: 91%;
+  height: 45px;
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: SUIT;
+  color: #555556;
+  padding: 10px;
+}
+.addressInput::placeholder {
+  color: #d8d8d8;
+  font-family: SUIT;
+  font-size: 15px;
+}
+#address-1 {
+  margin-bottom: 4px;
+}
+
+#reset {
+  display: block;
+  margin: auto;
+  width: 30%;
+  height: 40px;
+  border: 1px solid #d8d8d8;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 300;
+  color: #000000;
+  font-family: SUIT;
+}
+
+.lineMaking#lineMaking2 {
+  width: 87%;
+  height: 2px;
+  margin: auto;
+  border-bottom: 2px solid #ececec;
+}
+
+/* 팁달라는 안내 */
+.underBanner {
+margin-top: 29px;
+  display: flex;
+  justify-content: space-between;
+}
+#tipAlert {
+  margin-left: 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3E3E3F;
+}
+#deliveryTip {
+  color: #25D815;
+}
+#underBannerImg {
+  display: block;
+  width: 38%;
+}
+
+.submitButton {
+  cursor: pointer;
+  margin: auto;
+  margin-top: 27px;
+  margin-bottom: 44px;
+  display: block;
+  width: 170px;
+  height: 45.28px;
+  border-style: none;
+  border-radius: 9.94px;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 600;
+  background-color: #fcc419;
+}
+
+/* 팝업(모달) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7); /* 어두운 배경 색상 */
+}
+
+.modal-content {
+  background-color: white;
+  margin: 130px auto;
+  width: 85%;
+  height: 448px;
+  border-radius: 24px
+}
+.modalContent > img {
+  display: block;
+  margin: 0 auto;
+  padding-top: 48px;
+  width: 149px;
+}
+.modalContent > p {
+  margin-top: 27px;
+  margin-bottom: 41px;
+  text-align: center;
+  color: #606268;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.modalButton {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: 44px;
+  border-radius: 50px;
+  border: 1px solid #FCC419;
+  font-size: 16px;
+  font-weight: 500;
+}
+button#submitModal {
+color: white;
+background-color: #FCC419;;
+margin-bottom: 15px;
+}
+button#closeModal {
+color: #FCC419;
+background-color: white;
+}
+
+
+
