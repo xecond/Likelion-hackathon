@@ -1,39 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
-</head>
-<body>
-    <div>
-        <a href="{% url 'logout' %}">로그아웃</a>
-    </div>
-    <a href="{% url 'errand_home' %}">뒤로가기</a>
+{% extends 'base3.html' %} {% block content %} {% load static %}
 
-    <div>
-        {{user.name}}
-        내 포인트: {{user.point}} p
-        <div>포인트 충전하기</div>
-    </div>
+<!-- 헤더 -->
+<div class="header">
+    <div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back
+            </span></a></div>
+    <p class="title">마이페이지</p>
+</div>
 
-    <div>
-        <div>진행 중인 심부름</div>
 
-        {% for errand in ongoing_errands %}
-            <li>
-                <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }} </a>
-            </li>
-        {% endfor %}
+<!-- info -->
+<div class="info">
+    <img src="{%static 'deliveryBike.png' %}" class="bannerImg" />
+    <div class = 'box-wrap'>
+        <p class="name">{{user.name}}님의 포인트</p>
+        <p class="point">{{user.point}} p</p>
+        <div class="charge">포인트 충전하기</div></div>  
+</div>
 
-        <div>완료한 심부름</div>
+<div class="lineMaking"></div>
 
-        {% for errand in past_errands %}
-            <li>
-                <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }} </a>
-            </li>
-        {% endfor %}
+<!-- 진행중인 심부름 -->
+<div>
+    <div class="ongoing-text">진행 중인 심부름</div>
 
-    </div>
-</body>
-</html>
+    {% for errand in ongoing_errands %}
+        <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }}
+            <div
+                class="gray-box {% if errand.get_status_display == '진행 중' or errand.get_status_display == '완료' %}none{% endif %}">
+
+                <span class="material-symbols-outlined"> sell </span>
+                <div class="textBundle">
+                    <p class="content">{{errand.item}}</p>
+                    <p class="location">{{errand.address_1}}</p>
+                    <p class="uploadTime">{{errand.created_at}}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+
+    <!-- 완료한 심부름 -->
+    <div class = 'finish-text'>완료한 심부름</div>
+
+    {% for errand in past_errands %}
+    <li>
+        <a href="{% url 'errand_detail_for_server' errand.id %}">{{ errand.item }} </a>
+    </li>
+    {% endfor %}
+
+</div>
+
+<div>
+    <a href="{% url 'logout' %}">로그아웃</a>
+</div>
+
+
+{% endblock %}

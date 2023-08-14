@@ -217,8 +217,77 @@ button[type="submit"] {
 .mypage p {
   font-size: 18px;
   font-weight: 600;
-
   color: white;
   margin: 0;
   text-align: center;
 }
+
+/* info */
+.info {
+  display: flex;
+  margin-top: 15px;
+  margin-right: 39px;
+  margin-left: 33px;
+}
+
+.infoImg {
+  display: block;
+  width: 123px;
+  height: auto;
+  margin-right: 20px; 
+}
+
+.box-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-left: auto; 
+}
+
+.name {
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+  margin: 0;
+}
+
+.point {
+  font-size: 24px;
+  font-weight: 700;
+  color: #25D815;
+  margin: 10px 0;
+  white-space: nowrap;
+}
+
+.charge {
+  margin: 0;
+  display: flex;
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  width: 134px;
+  height: 30px;
+  background-color: #fcc419;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white; 
+}
+
+
+.ongoing-text {
+  margin: 8px 0 0 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+
+.finish-text {
+  margin: 8px 0 0 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+
+
