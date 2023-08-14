@@ -1,7 +1,7 @@
 {% extends 'base4.html' %} {% block content %} {% load static %}
 <!-- 헤더 -->
 <div class="header">
-<div class="icon"><a href="{{ request.META.HTTP_REFERER }}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
+<div class="icon"><a href="{% url 'client_home' %}"><span class="material-symbols-outlined"> arrow_back </span></a></div>
 <p class="title">심부름 요청하기</p>
 </div>
 
