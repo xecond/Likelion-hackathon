@@ -19,7 +19,7 @@
         <h2>심부름 요청 내역</h2>
         {% if requested_errands %}
             {% for errand in requested_errands %}
-                <li><a href="{% url 'errand_detail_for_client' errand.id %}">{{ errand.item }} - {{ errand.get_status_display }}</a></li>
+                <li><a href="{% url 'errand_detail_for_client' errand.id %}">{{ errand.item }} - {%if errand.get_status_display == '수락 대기'%}수락<br>대기중{% else %}{{ errand.get_status_display }}{% endif %}</a></li>
             {% endfor %}
         {% else %}
             <p>요청하신 심부름이 없습니다.</p>
