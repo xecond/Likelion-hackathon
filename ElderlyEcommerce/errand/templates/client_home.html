@@ -1,10 +1,8 @@
 {% extends 'base4.html' %} {% block content %} {% load static %}
 <!-- 헤더 -->
 <div class="header">
-  <div class="icon">
-    <a href="{{ request.META.HTTP_REFERER }}"
-      ><span class="material-symbols-outlined"> arrow_back </span></a
-    >
+  <div class="icon noneicon">
+    <span class="material-symbols-outlined"> arrow_back </span>
   </div>
   <div class="title">
     <img src="{%static 'textlogo.png' %}" />
@@ -27,18 +25,26 @@
 <div class="requestList">
   {% if requested_errands %} {% for errand in requested_errands %}
   <a href="{% url 'errand_detail_for_client' errand.id %}"
-    ><div class="request">
-      <div class="status"><p>{{ errand.get_status_display }}</p></div>
+    ><div class="request {% if errand.get_status_display == '진행 중' %}greenborder{% elif errand.get_status_display == '완료' %}grayborder{% endif %}">
+      <div class="status {% if errand.get_status_display == '진행 중' %}greenback{% elif errand.get_status_display == '완료' %}grayback{% endif %}">
+        <p>
+          {% if errand.get_status_display == '수락 대기' %}
+    수락<br />대기중
+{% elif errand.get_status_display == '진행 중' %}진행중 {% else %}
+{{errand.get_status_display}}
+{% endif %}
+        </p>
+      </div>
       <p class="requestContent">{{ errand.item }}</p>
     </div>
   </a>
   {% endfor %} {% else %}
-  <p>요청하신 심부름이 없습니다.</p>
+  <p class="noErrand">요청하신 심부름이 없습니다.</p>
   {% endif %}
 </div>
 
 <!-- 로그아웃버튼 -->
-<div>
-  <a href="{% url 'logout' %}">로그아웃</a>
+<div class="logout">
+  <a href="{% url 'logout' %}" class="no-color-change">로그아웃</a>
 </div>
 {% endblock %}
