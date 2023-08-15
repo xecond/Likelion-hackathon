@@ -1,19 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <li>
-        <a href="{% url 'login' %}?user_type=client">의뢰인으로 참여</a>
-    </li>
-    <li>
-        <a href="{% url 'login' %}?user_type=server">심부름꾼으로 참여</a>
-    </li>
-    <li>
-        <a href="{% url 'inform' %}">이용 안내</a>
-    </li>
-</body>
-</html>
+{% extends 'base1.html' %}
+  
+  {% block content %}
+  {% load static %}
+      <div class="logoContainer">
+        <img class="textlogo" src="{%static 'textlogo.png' %}" alt="로고" />
+      </div>
+
+      <p class="greetingText">
+        손끝배달에<br />어떤 일로 오셨나요?</span>
+      </p>
+
+      <div class="buttonContainer">
+<a href="{% url 'login' %}?user_type=client"><div id="clientButton">
+    <img src="{%static 'smartphone.png' %}" alt="심부름 요청하기" class="buttonImg">
+    <p class="firstText">심부름</p>
+    <p class="secondText">요청하기</p>
+</div></a>
+
+<a href="{% url 'login' %}?user_type=server"><div id="errandButton">
+    <img src="{%static 'shoppingCart.png' %}" alt="심부름 수행하기" class="buttonImg">
+    <p class="firstText">심부름</p>
+    <p class="secondText">수행하기</p>
+</div></a>
+      </div>
+
+      <a href="{% url 'inform' %}"><div class="manualContainer">
+        <p class="manual">사용법 안내</p>
+      </div></a>
+      {% endblock %}
+      

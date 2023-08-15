@@ -1,0 +1,311 @@
+/* errand_home.html */
+/* errand_home.html */
+/* errand_home.html */
+/* 헤더 */
+.header {
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  padding-top: 19px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: 600;
+
+}
+
+.icon {
+  float: left;
+  margin: 18px 0 0 7px;
+}
+
+.material-symbols-outlined {
+  font-size: 40px;
+  font-weight: 600;
+  color: #3E3E3F; /*보라색없애기*/
+}
+#noneicon {
+  color: white;
+}
+
+.header::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* 배너 */
+.banner {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bannerText {
+  margin-left: 20px;
+  margin-top: 31px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+.bannerImg {
+  display: block;
+  width: 123px;
+  height: auto;
+}
+
+.lineMaking {
+  width: 87%;
+  height: 25.35px;
+  margin: auto;
+  border-bottom: 2px solid #ececec;
+}
+
+/* '실시간 심부름 요청' 텍스트 */
+h2 {
+  margin: 8px 0 0 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+/* 주소 검색 창 */
+.address_search {
+  text-align: center;
+}
+
+.search-box-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid #fcc419;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 90%;
+  height: 42px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 23px;
+  justify-content: space-between;
+}
+
+/* 아이콘 */
+.address_search .material-symbols-outlined {
+  font-size: 28px;
+  color: #fcc419;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  flex: 1; /* 입력란이 남는 공간을 차지하도록 설정 */
+}
+
+/* 입력란 스타일 */
+#address_search {
+  border: none; /* 테두리 없애기 */
+  padding: 5px;
+  flex: 1; /* 입력란이 남는 공간을 차지하도록 설정 */
+}
+
+/* 버튼 스타일 */
+button[type="submit"] {
+  margin-right: 3px;
+  background-color: #fcc419;
+  color: white;
+  font-weight: 600;
+  width: 50px;
+  height: 33px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* 회색 박스 스타일 */
+.gray-box {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #f2f3f5;
+  border-radius: 10px;
+  width: 90%;
+  height: 106px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  position: relative;
+}
+.gray-box span {
+  margin-left: 16px;
+  margin-top: 16px;
+  font-size: 24px;
+  color: #fcc419;
+}
+
+.textBundle {
+  margin-right: 13px;
+  margin-left: 13px;
+}
+.content {
+  font-weight: 600;
+  color: #223263;
+  margin: 0;
+  margin-top: 16px;
+  margin-bottom: 21px;
+  width: 100%;
+  height: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden; /* 내부 컨텐츠 숨김 */
+  white-space: normal;
+}
+
+.location {
+  color: #9098b1;
+  font-size: 13px;
+  margin: 0;
+  margin-bottom: 3px;
+}
+
+.uploadTime {
+  position: absolute;
+  bottom: 12px;
+  color: #223263;
+  font-size: 12px;
+  margin: 0;
+}
+.none {
+  display: none;
+}
+
+/* 가상의 선 */
+.barrier {
+  margin: auto;
+  width: 50px;
+  height: 0;
+  margin-bottom: 80px;
+}
+
+/* Mypage 링크 스타일 */
+.sticky {
+  position: fixed;
+  width: 100%;
+  height: 73px;
+  bottom: 0; /* 원하는 떨어진 거리 조정 */
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  background-color: white;
+  border-top: 2px solid #ececec;
+}
+.mypage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: 47px;
+  margin: 13px auto;
+  background-color: #fcc419;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.mypage p {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+/* info */
+.info {
+  display: flex;
+  margin-top: 15px;
+  margin-right: 39px;
+  margin-left: 33px;
+}
+
+.infoImg {
+  display: block;
+  width: 123px;
+  height: auto;
+  margin-right: 20px; 
+}
+
+.box-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-left: auto; 
+}
+
+.name {
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+  margin: 0;
+}
+
+.point {
+  font-size: 24px;
+  font-weight: 700;
+  color: #25D815;
+  margin: 10px 0;
+  white-space: nowrap;
+}
+
+.charge {
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  width: 134px;
+  height: 45px;
+  background-color: #fcc419;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white; 
+}
+
+
+.ongoing-text {
+  margin: 16px 0 7px 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+
+.finish-text {
+  margin: 36px 0 7px 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+
+.logout {
+  margin: auto;
+  margin-top: 115px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  color: black;
+  text-decoration: none;
+}
+a.no-color-change {
+  color: inherit; /* 부모 요소의 색상 상속 */
+  text-decoration: underline;
+}

@@ -1,0 +1,222 @@
+/* index.html */
+/* index.html */
+/* 상단 로고 */
+.textlogo {
+  width: 114px;
+  height: 31.78px;
+  margin-top: 22px;
+  margin-left: 20px;
+}
+
+/* 텍스트 */
+.greetingText {
+  /* position: absolute; */
+  margin: 0;
+  margin-left: 24px;
+  margin-top: 61.22px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #3e3e3f;
+}
+
+/* 버튼 */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 84px;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 90%; */
+}
+
+#clientButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 164px;
+  height: 222px;
+  background-color: #fcc419;
+  margin-right: 23px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#errandButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 164px;
+  height: 222px;
+  background-color: #25d815;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 330px) {
+  #clientButton,
+  #errandButton {
+    width: 148px;
+  }
+  #clientButton {
+    margin-right: 8px;
+  }
+}
+
+.buttonImg {
+  margin-top: 39px;
+  width: 84px;
+  height: 84px;
+}
+
+.firstText {
+  margin-top: 13px;
+  margin-bottom: 6px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.secondText {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* 사용법 안내 버튼*/
+.manualContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 58px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 59px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 23px;
+  font-weight: 600;
+  color: #000000;
+}
+.manual {
+  margin: auto;
+}
+
+/* inform.html */
+/* inform.html */
+/* 헤더 */
+.header {
+  position: relative;
+}
+.title {
+  text-align: center;
+  padding-top: 19px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: 600;
+  color: #3e3e3f;
+}
+
+.icon {
+  float: left;
+  margin: 18px 0 0 7px;
+}
+
+.material-symbols-outlined {
+  font-size: 40px;
+  font-weight: 600;
+  color: #3e3e3f;
+}
+
+.header::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* 탭바 */
+.tab-bar {
+  display: flex;
+  position: sticky;
+  top: 0;
+  width: 90%;
+  margin: auto;
+  margin-top: 8px;
+  z-index: 1000;
+  background-color: #ffffff;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 25px;
+  color: #6d747f;
+  font-weight: 500;
+}
+
+.tab.active {
+  font-weight: 600;
+  color: #3e3e3f;
+  /* border-bottom: 3px solid #3e3e3f; */
+}
+/* 탭바 아래 컨텐츠 */
+.content {
+  display: none;
+  padding: 21px;
+  border-top: 1.5px solid #e3e2e2;
+}
+
+#requestContent.active,
+#performContent.active {
+  display: block;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 50%; /* 초기 위치에 따라 설정 */
+  background-color: #3e3e3f;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.imgContainer {
+  margin: auto;
+  width: 304px;
+  height: 270.79px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.manualImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.manualText {
+  margin: 0;
+  margin-bottom: 53px;
+  color: #686f77;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+
+.manualTextTip {
+  margin: 40px;
+  /* color: #686f77; */
+  font-weight: 700;
+  font-size: 23px;
+  text-align: center;
+}

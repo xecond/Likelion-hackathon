@@ -1,30 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>의뢰인 홈</title>
-</head>
-<body>
+{% extends 'base4.html' %} {% block content %} {% load static %}
+<!-- 헤더 -->
+<div class="header">
+  <div class="icon">
+    <span class="material-symbols-outlined" id="noneicon"> arrow_back </span>
+  </div>
+  <div class="title">
+    <img src="{%static 'textlogo.png' %}" />
+  </div>
+</div>
 
-    <div>
-        <a href="{% url 'logout' %}">로그아웃</a>
-    </div>
-    
-    <div>
-        <a href="{% url 'errand_new' %}">심부름 요청하기</a>
-    </div>
+<!-- 배너 -->
+<div class="banner">
+  <p class="bannerText">필요한 물건을 요청하고<br />편하게 받아보세요</p>
+  <img src="{%static 'unboxing.png' %}" class="bannerImg" />
+</div>
 
-    <div>
-        <h2>심부름 요청 내역</h2>
-        {% if requested_errands %}
-            {% for errand in requested_errands %}
-                <li><a href="{% url 'errand_detail_for_client' errand.id %}">{{ errand.item }} - {%if errand.get_status_display == '수락 대기'%}수락<br>대기중{% else %}{{ errand.get_status_display }}{% endif %}</a></li>
-            {% endfor %}
-        {% else %}
-            <p>요청하신 심부름이 없습니다.</p>
-        {% endif %}
-    </div>
+<a href="{% url 'errand_new' %}" class="afit"
+  ><div class="requestButton"><p>심부름 요청하기</p></div></a
+>
+<div class="lineMaking"></div>
 
-</body>
-</html>
+<div class="requestListTitle"><p>요청 내역</p></div>
+
+<div class="requestList">
+  {% if requested_errands %} {% for errand in requested_errands %}
+  <a href="{% url 'errand_detail_for_client' errand.id %}"
+    ><div class="request {% if errand.get_status_display == '진행 중' %}greenborder{% elif errand.get_status_display == '완료' %}grayborder{% endif %}">
+      <div class="status {% if errand.get_status_display == '진행 중' %}greenback{% elif errand.get_status_display == '완료' %}grayback{% endif %}">
+        <p>
+          {% if errand.get_status_display == '수락 대기' %}
+    수락<br />대기중
+{% elif errand.get_status_display == '진행 중' %}진행중 {% else %}
+{{errand.get_status_display}}
+{% endif %}
+        </p>
+      </div>
+      <p class="requestContent">{{ errand.item }}</p>
+    </div>
+  </a>
+  {% endfor %} {% else %}
+  <p class="noErrand">요청하신 심부름이 없습니다.</p>
+  {% endif %}
+</div>
+
+<!-- 로그아웃버튼 -->
+<div class="logout">
+  <a href="{% url 'logout' %}" class="no-color-change">로그아웃</a>
+</div>
+{% endblock %}
