@@ -9,18 +9,20 @@ def login_view(request):
     if request.method == 'POST':
         name = request.POST['name']
         phone_number = request.POST['phone_number']
-        user = CustomUser.objects.get(phone_number=phone_number)
-        if user is not None:
-            login(request, user)
+        try: 
+            user = CustomUser.objects.get(phone_number=phone_number)
+            if user is not None:
+                login(request, user)
+                user_type = request.GET.get('user_type')
+                if user_type == 'client':
+                    return redirect('client_home')
+                elif user_type == 'server':
+                    return redirect('errand_home')
+                else:
+                    return render(request, 'login.html')
+        except:
             user_type = request.GET.get('user_type')
-            if user_type == 'client':
-                return redirect('client_home')
-            elif user_type == 'server':
-                return redirect('errand_home')
-            else:
-                return render(request, 'login.html')
-        else:
-            return redirect('index')
+            return redirect('signup')
     else:
         return render(request, 'login.html')
 

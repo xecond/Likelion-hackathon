@@ -2,6 +2,15 @@
 /* errand_home.html */
 /* errand_home.html */
 /* 헤더 */
+
+html {
+  /* 폰트 크기 자동조정 방지 */
+ -webkit-text-size-adjust: 100%; /*Chrome, Safari, newer versions of Opera*/
+ -moz-text-size-adjust: 100%; /*Firefox*/
+ -ms-text-size-adjust: 100%;  /*Ie*/
+ -o-text-size-adjust: 100%; /*old versions of Opera*/
+}
+
 .header {
   position: relative;
 }
@@ -127,7 +136,7 @@ button[type="submit"] {
   height: 33px;
   border: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 16px;
   border-radius: 5px;
 }
 
