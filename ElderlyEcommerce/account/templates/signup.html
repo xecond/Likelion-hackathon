@@ -20,6 +20,10 @@
     <input type="text" placeholder="이름을 입력해주세요" id="name" name="name" required />
     <input type="text" placeholder="전화번호를 입력해주세요" id="phone_number" name="phone_number" required />
     <br />
+
+    {% if error_message %}
+    <p class="error-message">{{ error_message }}</p>
+    {% endif %}
 </div>
 
 <div class="submit">
