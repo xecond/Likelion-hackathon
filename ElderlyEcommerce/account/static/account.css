@@ -78,6 +78,10 @@ input::placeholder {
   line-height: 5px;
 }
 
+.name-number .error-message {
+  margin: 0 auto;
+}
+
 /* 로그인 버튼 스타일 */
 .name-number .submit button {
   background-color: #fcc419;
